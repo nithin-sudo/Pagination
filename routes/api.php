@@ -32,6 +32,4 @@ Route::group([
     Route::get('/user-profile', [AuthController::class, 'userProfile']);    
     //Route::get("email", [MailerController::class, "email"])->name("email");
 
-    Route::post("/send-email", [MailerController::class, "composeEmail"])->name("send-email");
-
 });
