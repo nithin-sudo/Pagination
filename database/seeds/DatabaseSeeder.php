@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 
+use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,5 +15,15 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UserSeeder::class);
+        $faker = Faker::create();
+
+    	foreach (range(1,500) as $index) {
+            DB::table('employees')->insert([
+                'firstname' => $faker->firstname,
+                'lastname' => $faker->lastname,
+                'email' => $faker->email,
+                'dob' => $faker->date($format = 'D-m-y', $max = '2010',$min = '1980')
+            ]);
+        }
     }
 }
